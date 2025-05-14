@@ -3,12 +3,12 @@ import ProductCard from '@/components/productCard'
 import { productos } from '@/lib/mock'
 
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     category: string
-  }
+  }>
 }
-export default function Home({ searchParams }: Props) {
-  const { category } = searchParams
+export default async function Home({ searchParams }: Props) {
+  const { category } = await searchParams
 
   const productsFilter = category
     ? productos.filter((p) => p.category === category)
